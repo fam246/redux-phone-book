@@ -23,7 +23,7 @@ class App extends Component {
           </Tabs>
           <Tabs>
           
-          <Link  exact to="/contacts/new">
+          <Link  exact to="/phonebooks/new">
             Add New Contact
           </Link>
         
@@ -35,8 +35,8 @@ class App extends Component {
 
         <Route exact path="/" component={PhonebookListContainer}/>
 
-        <Route path="/contacts/new" component={PhonebookFormContainer}/>
-        <Route path="/contacts/edit/:_id" component={PhonebookFormContainer}/>
+        <Route path="/phonebooks/new" component={PhonebookFormContainer}/>
+        <Route path="/phonebooks/edit/:_id" component={PhonebookFormContainer}/>
         
       </div>
     );

@@ -5,7 +5,7 @@ import PhonebookList from '../components/phonebook-list';
   render() {
     return (
       <div>
-          <h1> Contact List </h1>
+          <h1> Phonebook List </h1>
           <PhonebookList/>
         
       </div>
