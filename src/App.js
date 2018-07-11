@@ -1,36 +1,43 @@
 import React, { Component } from 'react';
-import {NavLink, Route} from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
+import {Link, Route} from 'react-router-dom';
+import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-//import PhonebookListContainer from './containers/phonebook-list-container';
-//import PhonebookFormContainer from './containers/phonebook-list-container';
+
+import PhonebookListContainer from './containers/phonebook-list-container';
+import PhonebookFormContainer from './containers/phonebook-form-container';
 
 
 
 class App extends Component {
-  state = {
-    value: 0,
-  };
-  handleChange = (event, value) => {
-    this.setState({ value });
-  };
+  
   render() {
-    const { value } = this.state;
+    
     return (
       <div >
-        <AppBar position="static">
-          <Tabs value={value}  onChange={this.handleChange}>
+        <Paper>
+        <Tabs >
           
-            <Tab label="Item One"  />
-          
-            <Tab label="Item Two" />
-            <Tab label="Item Three" href="#basic-tabs" />
+          <Link  exact to="/">
+            Phonebook List
+          </Link>
           </Tabs>
-        </AppBar>
-        {value === 0 && <Tab label="Item Ones" />}
-        {value === 1 && <Tab label="Item Twos" />}
-        {value === 2 && <Tab label="Item Threes" />}
+          <Tabs>
+          
+          <Link  exact to="/contacts/new">
+            Add New Contact
+          </Link>
+        
+        
+        
+   
+        </Tabs>
+        </Paper>
+
+        <Route exact path="/" component={PhonebookListContainer}/>
+
+        <Route path="/contacts/new" component={PhonebookFormContainer}/>
+        <Route path="/contacts/edit/:_id" component={PhonebookFormContainer}/>
+        
       </div>
     );
   }
