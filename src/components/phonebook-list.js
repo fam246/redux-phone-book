@@ -1,9 +1,25 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function PhonebookList () {
+export default function PhonebookList({phonebooks}){
+
+  const list = () => {
+    return phonebooks.map(phonebook => {
+      return (
+        <li key={phonebook._id}>{phonebook.name.first} {phonebook.name.last}</li>
+      )
+    })
+  }
+
   return (
     <div>
-      <p> No contacts found </p>
+      <ul>
+        { list() }
+      </ul>
     </div>
   )
 }
+
+PhonebookList.propTypes = {
+  phonebooks: PropTypes.array
+};
