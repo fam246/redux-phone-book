@@ -4,10 +4,11 @@ const defaultState ={
 
 export default (state = defaultState, action={}) =>{
 switch (action.type){
-    case 'FETCH_PHONEBOOKDATA':{
+    case 'FETCH_PHONEBOOKDATA_FULFILLED':{
         return {
             ...state,
-            phonebooks: action.payload
+            phonebooks: action.payload.data.data || 
+             action.payload.data
         }
     }
     default:

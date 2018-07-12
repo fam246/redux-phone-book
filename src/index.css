@@ -5,3 +5,7 @@ body {
   padding-right: 100px;
   font-family: sans-serif;
 }
+
+.error{
+  color: red;
+}
