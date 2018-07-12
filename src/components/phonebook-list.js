@@ -1,25 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import PhonebookCard from './phonebook-card';
+import Card from '@material-ui/core/Card';
 
 export default function PhonebookList({phonebooks}){
 
-  const list = () => {
+  const cards = () => {
     return phonebooks.map(phonebook => {
       return (
-        <li key={phonebook._id}>{phonebook.name.first} {phonebook.name.last}</li>
+        <PhonebookCard key = {phonebook._id} phonebook={phonebook}/>
       )
     })
   }
 
   return (
-    <div>
-      <ul>
-        { list() }
-      </ul>
-    </div>
+    
+      <Card>
+        { cards() }
+      
+    </Card>
   )
 }
 
 PhonebookList.propTypes = {
-  phonebooks: PropTypes.array
+  phonebooks: PropTypes.array.isRequired
 };
