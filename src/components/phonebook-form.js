@@ -1,43 +1,80 @@
 import React, { Component } from 'react';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import {Field, reduxForm} from 'redux-form';
+import {TextField} from 'redux-form-material-ui';
+
+const required = value => (value == null ? 'Required' : undefined);
+const email = value =>
+  (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
+    ? 'Invalid email'
+    : undefined);
 
 
+class PhonebookForm extends Component {
 
- class PhonebookForm extends Component {
+
   render() {
+    const {handleSubmit,submitting} = this.props;
     return (
-      <form>
+      <form onSubmit={handleSubmit}>
         <h3>Add Contact</h3>
-        <TextField
-          id="name.first"
-          label="First Name"
-          margin="normal"
-        />
-        <br/>
-        <TextField
-          id="name.last"
-          label="Last Name"
-          margin="normal"
-        />
-        <br/>
-        <TextField
-          id="phone"
-          label="Phone"
-          margin="normal"
-        />
-        <br/>
-        <TextField
-          id="email"
-          label="Email"
-          margin="normal"
-        />
-        <br/>
-        <Button color="primary">
-        Save
-      </Button>
+        <div>
+        <Field 
+            name="name.first"
+            type="text"
+            component={TextField}
+            hintText="Name"
+            label="First Name"
+            validate={required}
+            
+          
+          />
+          </div>
+          <br/>
+           <div>
+          <Field
+            name="name.last"
+            type="text"
+            component={TextField}
+            hintText="Name"
+            label="Last Name"
+            validate={required}
+          
+          
+          />
+          </div>
+          <br/>
+          <div>
+          <Field
+            name="phone"
+            type="text"
+            component={TextField}
+            hintText="Phone"
+            label="Phone"
+            validate={required}
+          
+            
+          />
+          </div>
+          <br/>
+           <div>
+          <Field
+            name="email"
+            type="text"
+            component={TextField}
+            hintText="Email"
+            label="Email"
+            validate={[required,email]}
+          
+            
+          />
+          </div>
+          <br/>
+          <div>
+          <button type="submit" disabled={submitting} >Submit</button>
+          </div>
+        
         </form>
     )
   }
 }
-export default PhonebookForm;
+export default reduxForm({form: 'phonebooks'})(PhonebookForm);
