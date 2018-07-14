@@ -13,10 +13,12 @@ class PhonebookForm extends Component {
 
 
   render() {
-    const {handleSubmit,submitting} = this.props;
+    const {handleSubmit,pristine, submitting, loading} = this.props;
     return (
-      <form onSubmit={handleSubmit}>
-        <h3>Add Contact</h3>
+      
+      <form onSubmit={handleSubmit} loading={loading}>
+      <h3>Add Contact</h3>
+        
         <div>
         <Field 
             name="name.first"
@@ -70,11 +72,11 @@ class PhonebookForm extends Component {
           </div>
           <br/>
           <div>
-          <button type="submit" disabled={submitting} >Submit</button>
+          <button type="submit" disabled={pristine || submitting}>Save</button>
           </div>
         
         </form>
     )
   }
 }
-export default reduxForm({form: 'phonebooks'})(PhonebookForm);
+export default reduxForm({form: 'phonebook'})(PhonebookForm);
