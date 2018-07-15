@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {TextField} from 'redux-form-material-ui';
+import PropTypes from 'prop-types';
 
 const required = value => (value == null ? 'Required' : undefined);
 const email = value =>
@@ -79,4 +80,13 @@ class PhonebookForm extends Component {
     )
   }
 }
+PhonebookForm.propTypes={
+  handleSubmit: PropTypes.object.isRequired,
+  pristine: PropTypes.object.isRequired,
+  submitting: PropTypes.object.isRequired,
+  loading: PropTypes.object.isRequired
+}
+
+
+
 export default reduxForm({form: 'phonebook'})(PhonebookForm);
