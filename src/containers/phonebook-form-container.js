@@ -4,6 +4,7 @@ import {SubmissionError} from 'redux-form';
 import {connect} from 'react-redux';
 import {newPhonebookContact, savePhoneBookContact} from '../actions/phonebook-actions';
 import PhonebookForm from '../components/phonebook-form';
+import PropTypes from 'prop-types';
 
  class PhonebookFormContainer extends Component {
    state ={
@@ -47,6 +48,14 @@ function mapStateToProps(state){
     errors: state.phonebookStore.errors
   }
 }
+
+PhonebookFormContainer.propTypes = {
+  newPhonebookContact: PropTypes.func.isRequired,
+  savePhoneBookContact: PropTypes.func.isRequired,
+  phonebook:PropTypes.object.isRequired,
+  errors:PropTypes.object.isRequired,
+  loading:PropTypes.object.isRequired
+};
 
 
 
