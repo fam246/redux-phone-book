@@ -102,6 +102,14 @@ switch (action.type){
       }
     }
 
+    case 'DELETE_PHONEBOOKCONTACT_FULFILLED':{
+      const _id = action.payload.data._id;
+      return{
+        ...state,
+        phonebooks:state.phonebooks.filter(item => item._id !==_id)
+      }
+    }
+
 
 
 }

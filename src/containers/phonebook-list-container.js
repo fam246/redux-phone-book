@@ -1,7 +1,7 @@
 import React, { Component,  } from 'react';
 import PhonebookList from '../components/phonebook-list';
 import {connect} from 'react-redux';
-import {fetchPhonebookData} from '../actions/phonebook-actions';
+import {fetchPhonebookData, deletePhoneBookContact} from '../actions/phonebook-actions';
 import PropTypes from 'prop-types';
 
 
@@ -14,7 +14,7 @@ import PropTypes from 'prop-types';
     return (
       <div>
           <h1> Phonebook List </h1>
-          <PhonebookList phonebooks={this.props.phonebooks}/>
+          <PhonebookList phonebooks={this.props.phonebooks} deletePhoneBookContact={this.props.deletePhoneBookContact}/>
         
       </div>
     )
@@ -23,7 +23,8 @@ import PropTypes from 'prop-types';
 
 PhonebookListContainer.propTypes = {
   fetchPhonebookData: PropTypes.func.isRequired,
-  phonebooks: PropTypes.array.isRequired
+  phonebooks: PropTypes.array.isRequired,
+  deletePhoneBookContact: PropTypes.func.isRequired
 };
 
 
@@ -36,4 +37,4 @@ PhonebookListContainer.propTypes = {
       }
     }
 
-export default connect(mapStateToProps, {fetchPhonebookData})(PhonebookListContainer);
+export default connect(mapStateToProps, {fetchPhonebookData,deletePhoneBookContact})(PhonebookListContainer);

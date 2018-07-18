@@ -46,3 +46,13 @@ export function updatePhoneBookContact(phonebook){
         })
     }
 }
+
+export function deletePhoneBookContact(_id){
+    return dispatch =>{
+        return dispatch({
+            type: 'DELETE_PHONEBOOKCONTACT',
+            payload: client.delete(`${url}/${_id}`)
+        })
+    }
+
+}

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 
 
-export default function PhonebookCard ({phonebook}) {
+export default function PhonebookCard ({phonebook,deletePhoneBookContact}) {
   return (
     <Card>
         <CardContent key={phonebook._id}>
@@ -27,11 +27,9 @@ export default function PhonebookCard ({phonebook}) {
 
                  
            
-             <Button color="secondary">
+             <Button color="secondary" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) deletePhoneBookContact(phonebook._id) } } >
                  Delete
-                
-
-                 </Button>
+                </Button>
                  </div>
            
 
@@ -42,5 +40,6 @@ export default function PhonebookCard ({phonebook}) {
 }
 
 PhonebookCard.propTypes = {
-    phonebook: PropTypes.object.isRequired
+    phonebook: PropTypes.object.isRequired,
+    deletePhoneBookContact:PropTypes.func.isRequired
   };
