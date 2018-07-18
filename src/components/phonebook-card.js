@@ -2,7 +2,9 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
+
 
 
 export default function PhonebookCard ({phonebook}) {
@@ -18,17 +20,19 @@ export default function PhonebookCard ({phonebook}) {
            {phonebook.email}
 
            <br/>
-           <Button color= "primary"> 
-                 Edit
+           <div>
+           
+           <Link to={`/phonebooks/edit/${phonebook._id}`} >Edit</Link>
                 
 
-                 </Button>
+                 
            
              <Button color="secondary">
                  Delete
                 
 
                  </Button>
+                 </div>
            
 
             </CardContent>

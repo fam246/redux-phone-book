@@ -12,14 +12,25 @@ const email = value =>
 
 
 class PhonebookForm extends Component {
+componentWillReceiveProps=(nextProps)=>{
+  const {phonebook} = nextProps;
+  if(phonebook._id !== this.props.phonebook._id){
+    this.props.initialize(phonebook);
+  }
 
+
+}
 
   render() {
     const {handleSubmit,pristine, submitting, loading} = this.props;
+    
     return (
+      <div>
+      <h1 style={{marginTop:"1em"}}>{this.props.phonebook._id ? 'Edit Contact' : 'Add New Contact'}</h1>
       
       <form onSubmit={handleSubmit} loading={loading}>
-      <h3>Add Contact</h3>
+      
+      
         
         <div>
         <Field 
@@ -78,6 +89,7 @@ class PhonebookForm extends Component {
           </div>
         
         </form>
+        </div>
     )
   }
 }
@@ -85,7 +97,10 @@ PhonebookForm.propTypes={
   handleSubmit: PropTypes.object.isRequired,
   pristine: PropTypes.object.isRequired,
   submitting: PropTypes.object.isRequired,
-  loading: PropTypes.object.isRequired
+  loading: PropTypes.object.isRequired,
+  phonebook:PropTypes.object.isRequired,
+  initialize:PropTypes.object.isRequired
+
 }
 
 

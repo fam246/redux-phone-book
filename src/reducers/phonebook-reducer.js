@@ -52,6 +52,56 @@ switch (action.type){
         }
       }
 
+      case 'FETCH_PHONEBOOKCONTACT_PENDING' :{
+        return{
+          ...state,
+          loading:true,
+          phonebook:{name:{}}
+        }
+      }
+
+      case 'FETCH_PHONEBOOKCONTACT_FULFILLED':{
+        return{
+          ...state,
+          phonebook:action.payload.data,
+          errors:{},
+          loading:false
+        }
+      }
+
+      case 'UPDATE_PHONEBOOKCONTACT_PENDING':{
+        return{
+          ...state,
+          loading:true
+        }
+      }
+
+      case 'UPDATE_PHONEBOOKCONTACT_FULFILLED':{
+        const phonebook = action.payload.data;
+        return{
+          ...state,
+          phonebooks: state.phonebooks.map(item => item._id ===
+          phonebook._id ? phonebook : item),
+          errors:{},
+          loading:false
+        }
+      }
+
+
+      case 'UPDATE_PHONEBOOKCONTACT_REJECTED':{
+        const data = action.payload.response.data;
+        const {"name.first":first, "name.last":last,phone,email} = 
+        data.errors;
+        const errors = {global:data.message, name:{first,last},phone,email};
+      
+
+      return{
+        ...state,
+        errors:errors,
+        loading:false
+      }
+    }
+
 
 
 }

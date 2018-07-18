@@ -28,3 +28,21 @@ export function savePhoneBookContact(phonebook){
     }
 
 }
+
+export function fetchPhoneBookContact(_id){
+    return dispatch =>{
+        return dispatch({
+            type: 'FETCH_PHONEBOOKCONTACT',
+            payload: client.get(`${url}/${_id}`)
+        })
+    }
+}
+
+export function updatePhoneBookContact(phonebook){
+    return dispatch=>{
+        return dispatch({
+            type:'UPDATE_PHONEBOOKCONTACT',
+            payload: client.put(`${url}/${phonebook._id}`, phonebook)
+        })
+    }
+}
